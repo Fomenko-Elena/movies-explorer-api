@@ -10,11 +10,10 @@ module.exports.noVersionKeyProjection = '-__v';
 module.exports.JoiHelper = {
   id: () => Joi.string().pattern(/^[0-9a-fA-F]{24}$/),
   userName: () => Joi.string().min(2).max(30),
-  userPassword: () => Joi.string(),
   url: () => Joi.string().pattern(module.exports.URL_REGEX),
   email: () => Joi.string().custom((value, helper) => {
     if (!validator.isEmail(value)) {
-      return helper.message('������������ email');
+      return helper.message('Некорректный email');
     }
     return value;
   }),

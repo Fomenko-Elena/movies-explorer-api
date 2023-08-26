@@ -1,13 +1,12 @@
 const router = require('express').Router();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const { errors } = require('celebrate');
 const cors = require('../middlewares/cors');
 const {
   requestLogger,
   errorLogger,
 } = require('../middlewares/logger');
-const { celebrate, Joi, errors } = require('celebrate');
-const { JoiHelper } = require('../utils/utils');
 const {
   addUser,
   login,
@@ -16,6 +15,7 @@ const {
 const auth = require('../middlewares/auth');
 const otherErrors = require('../middlewares/errors');
 const { NotFoundError } = require('../utils/errors');
+const { validateSignUp, validateSignIn } = require('./validation');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -23,33 +23,9 @@ router.use(cookieParser());
 router.use(requestLogger);
 router.use(cors);
 
-router.post(
-  '/signin',
-  celebrate({
-    body: Joi.object().keys({
-      email: JoiHelper.email().required(),
-      password: JoiHelper.userPassword().required(),
-    }),
-  }),
-  login,
-);
-
-router.post(
-  '/signup',
-  celebrate({
-    body: Joi.object().keys({
-      email: JoiHelper.email().required(),
-      password: JoiHelper.userPassword().required(),
-      name: JoiHelper.userName(),
-    }),
-  }),
-  addUser,
-);
-
-router.post(
-  '/signout',
-  logoff,
-);
+router.post('/signin', validateSignIn, login);
+router.post('/signup', validateSignUp, addUser);
+router.post('/signout', logoff);
 
 router.use(auth);
 

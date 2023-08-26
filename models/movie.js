@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 const { URL_REGEX } = require('../utils/utils');
 
 const movieSchema = new mongoose.Schema({
