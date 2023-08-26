@@ -13,7 +13,7 @@ const {
   COOKIE_OPTIONS,
   COOKIE_NAME,
   HTTP_CREATED,
-} = require('../utils/constants');
+} = require('../utils/settings');
 const {
   NotFoundError,
   DuplicateError,

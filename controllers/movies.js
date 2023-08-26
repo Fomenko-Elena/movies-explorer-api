@@ -1,6 +1,6 @@
 const { MongoServerError } = require('mongoose').mongo;
 const Movie = require('../models/movie');
-const { HTTP_CREATED } = require('../utils/constants');
+const { HTTP_CREATED } = require('../utils/settings');
 const { NotFoundError, ForbiddenError, DuplicateError } = require('../utils/errors');
 const { noVersionKeyProjection, noVersionKeyOptions } = require('../utils/utils');
 

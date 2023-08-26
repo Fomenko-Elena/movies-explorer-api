@@ -18,7 +18,7 @@ const auth = require('../middlewares/auth');
 const otherErrors = require('../middlewares/errors');
 const { NotFoundError } = require('../utils/errors');
 const { validateSignUp, validateSignIn } = require('./validation');
-const { rateLimitSettings } = require('../utils/constants');
+const { rateLimitSettings } = require('../utils/settings');
 
 router.use(rateLimit(rateLimitSettings));
 router.use(bodyParser.json());

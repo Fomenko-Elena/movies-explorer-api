@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { SECRET_KEY, COOKIE_NAME } = require('../utils/constants');
+const { SECRET_KEY, COOKIE_NAME } = require('../utils/settings');
 const { UnauthorizedError } = require('../utils/errors');
 
 const BEARER_PREFIX = 'Bearer ';

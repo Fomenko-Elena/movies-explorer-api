@@ -1,3 +1,14 @@
+const MongoStore = require('rate-limit-mongo');
+
+const {
+  PORT = 3000,
+  MONGODB_URI = 'mongodb://localhost:27017/bitfilmsdb',
+} = process.env;
+
+module.exports.PORT = PORT;
+
+module.exports.MONGODB_URI = MONGODB_URI;
+
 module.exports.PASSWORD_SALT_LENGTH = 10;
 
 module.exports.HTTP_CREATED = 201;
@@ -35,4 +46,8 @@ module.exports.rateLimitSettings = {
   windowMs: 5 * 60 * 1000,
   max: 1000,
   standardHeaders: true,
+  store: new MongoStore({
+    uri: MONGODB_URI,
+    expireTimeMs: 5 * 60 * 1000,
+  }),
 };
