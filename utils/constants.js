@@ -30,3 +30,9 @@ module.exports.allowedCors = [
   'http://praktikum.tk',
   'http://localhost:3001',
 ].concat(((CORS_LIST && JSON.parse(CORS_LIST)) || []));
+
+module.exports.rateLimitSettings = {
+  windowMs: 5 * 60 * 1000,
+  max: 1000,
+  standardHeaders: true,
+};
