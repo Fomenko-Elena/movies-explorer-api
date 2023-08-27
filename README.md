@@ -1,5 +1,5 @@
 # movies-explorer-api
-Допломна работа Фоменко Елены.
+Дипломная работа Фоменко Елены.
 Бэкенд.
 
 Domain: api.diplom-ef.nomoredomainsicu.ru
